@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from .models import Cliente
+from django.views.generic.list import ListView
 
-def client_list(request):
+class ClientList(ListView):
     clients = Cliente.objects.all()
-    return render(request, 'clientes.html', {'clients': clients})
+
+    def get_queryset(self, *args, **kwargs):
+        # queryset = Tarefa.objects.filter(user=self.request.user)
+        return Cliente.objects.filter(user=self.request.user)
