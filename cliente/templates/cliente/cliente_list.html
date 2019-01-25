@@ -8,10 +8,22 @@
     <title>Lista de Pessoas</title>
 </head>
 <body>
-aa
-{% for client in object_list %}
-    {{ client }}
-{% endfor %}
+<a href="{% url 'client_new' %}">New</a>
+<table border="1">
+    <tr>
+        <td>Id</td>
+        <td>Nome Cliente</td>
+        <td>Usuário</td>
+    </tr>
+    {% for client in object_list %}
+        <tr>
+            <td><a href="{% url 'client_update' client.id %}">{{ client.id }}</a></td>
+            <td>{{ client.nome_cliente }}</td>
+            <td>{{ client.user }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
 
 </body>
 </html>
